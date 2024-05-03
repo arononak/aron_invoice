@@ -341,7 +341,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     return Column(
       children: [
         const SizedBox(height: 100),
-        const Text('Wersja 1.0.0'),
+        const Text('Wersja 1.0.1'),
         const SizedBox(height: 16.0),
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
