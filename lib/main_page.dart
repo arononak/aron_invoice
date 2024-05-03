@@ -23,11 +23,24 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   late final _fadeController = AnimationController(duration: const Duration(milliseconds: 300), vsync: this);
   late final _fadeAnimation = CurvedAnimation(parent: _fadeController, curve: Curves.easeIn);
 
-  late final Timer _timer;
+  Timer? _timer;
+
+  final invoiceNumberController = TextEditingController(text: exampleInvoice.invoiceNumber);
+  final issueDateController = TextEditingController(text: exampleInvoice.issueDate);
+  final saleDateController = TextEditingController(text: exampleInvoice.saleDate);
+  final sellerController = TextEditingController(text: exampleInvoice.seller);
+  final buyerController = TextEditingController(text: exampleInvoice.buyer);
+
+  final descriptionController = TextEditingController(text: exampleInvoice.productList.first.description);
+  final netPriceController = TextEditingController(text: exampleInvoice.productList.first.netPrice.toString());
+  final vatRateController = TextEditingController(text: exampleInvoice.productList.first.vatRate.toString());
+  final currencyController = TextEditingController(text: exampleInvoice.productList.first.currency);
+
+  final additionalDescriptionController = TextEditingController(text: exampleInvoice.additionalDescription);
 
   @override
   void dispose() {
-    _timer.cancel();
+    _timer?.cancel();
     _fadeController.dispose();
     super.dispose();
   }
@@ -35,8 +48,10 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     precacheImage(const AssetImage('assets/image.png'), context).then((value) {
-      _fadeController.forward();
-      _timer = Timer(const Duration(seconds: 5), () => setState(() => _showAnimation = true));
+      if (_timer == null) {
+        _timer = Timer(const Duration(seconds: 5), () => setState(() => _showAnimation = true));
+        _fadeController.forward();
+      }
     });
 
     return Scaffold(
@@ -147,19 +162,6 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   }
 
   Widget _buildGenerateForm({required void Function(Invoice invoice) onGenerateInvoicePressed}) {
-    final invoiceNumberController = TextEditingController(text: exampleInvoice.invoiceNumber);
-    final issueDateController = TextEditingController(text: exampleInvoice.issueDate);
-    final saleDateController = TextEditingController(text: exampleInvoice.saleDate);
-    final sellerController = TextEditingController(text: exampleInvoice.seller);
-    final buyerController = TextEditingController(text: exampleInvoice.buyer);
-
-    final descriptionController = TextEditingController(text: exampleInvoice.productList.first.description);
-    final netPriceController = TextEditingController(text: exampleInvoice.productList.first.netPrice.toString());
-    final vatRateController = TextEditingController(text: exampleInvoice.productList.first.vatRate.toString());
-    final currencyController = TextEditingController(text: exampleInvoice.productList.first.currency);
-
-    final additionalDescriptionController = TextEditingController(text: exampleInvoice.additionalDescription);
-
     return Column(
       children: [
         buildTextField(

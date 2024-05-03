@@ -104,7 +104,7 @@ Future<void> generateInvoice(Invoice invoice) async {
                 text(invoice.additionalDescription),
               ],
             ),
-            text('Wygenerowano przez AronInvoice.web.app'),
+            text('Wygenerowano przez aroninvoice.web.app'),
           ],
         );
       },

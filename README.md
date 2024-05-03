@@ -8,6 +8,10 @@
 
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/arononak/aron_invoice/.github%2Fworkflows%2Fdart.yml?labelColor=yellow&color=white)
 
+# 🏞 Preview
+
+![](https://github.com/arononak/aron_invoice/blob/main/preview.png?raw=true)
+
 # 📝 License
 
 > [!NOTE]
