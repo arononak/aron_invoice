@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:aron_flutter_utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -129,10 +130,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
           icon: const Icon(Icons.code),
         ),
         const SizedBox(width: 8.0),
-        IconButton(
-          onPressed: () => showLicensePage(context: context),
-          icon: const Icon(Icons.gavel),
-        ),
+        AronLicenseIcon(),
         const SizedBox(width: 16.0),
       ],
     );
